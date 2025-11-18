@@ -253,58 +253,100 @@ class BaseHandler(RequestHandler):
     #     self.set_header('Content-Type', self.get_content_type())
 
     #------NONCE IMPLEMENTATION---------------------------------
-    def set_default_headers(self):
-        """
-        Set any headers passed as tornado_settings['headers'].
+    # def set_default_headers(self):
+    #     """
+    #     Set any headers passed as tornado_settings['headers'].
 
-        Also responsible for setting content-type header
-        """
-        # --- 1. GENERATE NONCE ---
-        # Generate a new random nonce for this request
-        # Use a short length for base64: 12 bytes = 16 base64 chars
-        self.csp_nonce = base64.b64encode(os.urandom(12)).decode('utf-8')
+    #     Also responsible for setting content-type header
+    #     """
+    #     # --- 1. GENERATE NONCE ---
+    #     # Generate a new random nonce for this request
+    #     # Use a short length for base64: 12 bytes = 16 base64 chars
+    #     self.csp_nonce = base64.b64encode(os.urandom(12)).decode('utf-8')
         
-        # wrap in HTTPHeaders for case-insensitivity
-        headers = HTTPHeaders(self.settings.get('headers', {}))
-        headers.setdefault("X-JupyterHub-Version", __version__)
+    #     # wrap in HTTPHeaders for case-insensitivity
+    #     headers = HTTPHeaders(self.settings.get('headers', {}))
+    #     headers.setdefault("X-JupyterHub-Version", __version__)
 
-        for header_name, header_content in headers.items():
-            self.set_header(header_name, header_content)
+    #     for header_name, header_content in headers.items():
+    #         self.set_header(header_name, header_content)
 
-        if 'Access-Control-Allow-Headers' not in headers:
-            self.set_header(
-                'Access-Control-Allow-Headers', 'accept, content-type, authorization'
-            )
+    #     if 'Access-Control-Allow-Headers' not in headers:
+    #         self.set_header(
+    #             'Access-Control-Allow-Headers', 'accept, content-type, authorization'
+    #         )
 
-        # --- 2. SET CSP HEADER WITH NONCE ---
-        if 'Content-Security-Policy' not in headers:
-            # Customize the CSP: inject nonce into style-src and script-src
-            csp = self.content_security_policy
+    #     # --- 2. SET CSP HEADER WITH NONCE ---
+    #     if 'Content-Security-Policy' not in headers:
+    #         # Customize the CSP: inject nonce into style-src and script-src
+    #         csp = self.content_security_policy
             
-            # The style-src/script-src must be defined securely.
-            # We add 'nonce-...' to the default policy string.
+    #         # The style-src/script-src must be defined securely.
+    #         # We add 'nonce-...' to the default policy string.
             
-            # Ensure the policy is strict. The existing default is only:
-            # "frame-ancestors 'none'; report-uri /hub/security/csp-report"
+    #         # Ensure the policy is strict. The existing default is only:
+    #         # "frame-ancestors 'none'; report-uri /hub/security/csp-report"
             
-            # Define the full secure policy here.
-            # WARNING: This policy is a suggestion and may need further tuning 
-            # for your specific environment (e.g., if you load scripts/styles from CDNs).
+    #         # Define the full secure policy here.
+    #         # WARNING: This policy is a suggestion and may need further tuning 
+    #         # for your specific environment (e.g., if you load scripts/styles from CDNs).
             
-            # Use 'strict-dynamic' for scripts and 'nonce' for styles
+    #         # Use 'strict-dynamic' for scripts and 'nonce' for styles
+    #         strict_csp = (
+    #             f"frame-ancestors 'none';"
+    #             f"report-uri {self.csp_report_uri};"
+    #             f"script-src 'self' 'strict-dynamic' 'nonce-{self.csp_nonce}';"
+    #             f"style-src 'self' 'nonce-{self.csp_nonce}';"
+    #             f"default-src 'self';"
+    #             # Add other directives if needed (e.g., img-src 'self' data:;)
+    #         )
+            
+    #         self.set_header('Content-Security-Policy', strict_csp)
+        
+    #     self.set_header('Content-Type', self.get_content_type())
+
+    def set_default_headers(self):
+            """
+            Set default headers, including your strict, dynamic CSP.
+            """
+            # --- 1. GENERATE NONCE ---
+            # Generate a new random nonce for this request (12 bytes -> 16 chars base64)
+            self.csp_nonce = base64.b64encode(os.urandom(12)).decode('utf-8')
+            
+            # Pull headers from settings
+            headers = HTTPHeaders(self.settings.get('headers', {}))
+            
+            # --- 2. DEFINE YOUR FULL CSP ---
+            # Define the full secure policy here. Note: We use f-strings for the nonce.
             strict_csp = (
                 f"frame-ancestors 'none';"
                 f"report-uri {self.csp_report_uri};"
                 f"script-src 'self' 'strict-dynamic' 'nonce-{self.csp_nonce}';"
                 f"style-src 'self' 'nonce-{self.csp_nonce}';"
                 f"default-src 'self';"
-                # Add other directives if needed (e.g., img-src 'self' data:;)
+                # Add other necessary directives like img-src, connect-src, etc., 
+                # if they were previously defined or required.
             )
             
+            # --- 3. SET NONCE CSP (OVERRIDING ANY EXISTING CSP) ---
             self.set_header('Content-Security-Policy', strict_csp)
-        
-        self.set_header('Content-Type', self.get_content_type())
+            
+            # Set other headers (X-JupyterHub-Version, Access-Control-Allow-Headers)
+            headers.setdefault("X-JupyterHub-Version", __version__)
+            
+            # Apply other headers from settings
+            for header_name, header_content in headers.items():
+                # Skip applying an old CSP if it was defined in settings, as we just set the new one
+                if header_name.lower() == 'content-security-policy':
+                    continue
+                self.set_header(header_name, header_content)
 
+            if 'Access-Control-Allow-Headers' not in headers:
+                self.set_header(
+                    'Access-Control-Allow-Headers', 'accept, content-type, authorization'
+                )
+                
+            self.set_header('Content-Type', self.get_content_type())
     # ---------------------------------------------------------------
     # Login and cookie-related
     # ---------------------------------------------------------------
