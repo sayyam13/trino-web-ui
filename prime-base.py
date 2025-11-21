@@ -1550,7 +1550,7 @@ class BaseHandler(RequestHandler):
             parsed_scopes=self.parsed_scopes,
             expanded_scopes=self.expanded_scopes,
             xsrf=self.xsrf_token.decode('ascii'),
-            csp_nonce=getattr(self, 'csp_nonce', ''), # Expose the nonce variable
+            csp_nonce=getattr(self, 'csp_nonce', 'empty'), # Expose the nonce variable
         )
         if self.settings['template_vars']:
             for key, value in self.settings['template_vars'].items():
