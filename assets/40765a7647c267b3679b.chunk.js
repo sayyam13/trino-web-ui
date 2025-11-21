@@ -1,0 +1,190 @@
+(globalThis.webpackChunksuperset=globalThis.webpackChunksuperset||[]).push([[7657,9930],{2178:(e,t,o)=>{"use strict";o.r(t),o.d(t,{default:()=>_,getHighlightLayer:()=>v,getLayer:()=>f,getPoints:()=>h});var r=o(2445),a=o(17478),i=o(15536),l=o(25542),n=o(92329),s=o(1376),c=o(77117),u=o(20082),d=o(73107),g=o(17181);function p(){return(p=Object.assign||function(e){for(var t=1;t<arguments.length;t++){var o=arguments[t];for(var r in o)Object.prototype.hasOwnProperty.call(o,r)&&(e[r]=o[r])}return e}).apply(this,arguments)}let f=function({formData:e,payload:t,setTooltip:o,setDataMask:s,onContextMenu:g,filterState:f,emitCrossFilters:h}){let v=e.color_scheme,_=i.getScale(v),m=t.data.features;e.js_data_mutator&&(m=(0,n.A)(e.js_data_mutator)(m));let y=e.color_breakpoints,x=e.color_scheme_type,b=(0,l.XC)({defaultBreakpointsColor:e.default_breakpoint_color,colorSchemeType:x,colorScale:_,colorBreakpoints:y,fixedColor:e.color_picker}),P=(0,l.g_)(e.js_agg_function,e=>e.weight),w=(0,d.j1)(e,t=>{var o,a,i,l;let n;return n=(null==(o=e.size)?void 0:o.label)||(null==(a=e.size)?void 0:a.value)||"Height",(0,r.FD)("div",{className:"deckgl-tooltip",children:[d.EO.centroid(t),(0,r.Y)(c.A,{label:`${n}: `,value:`${(null==(i=t.object)?void 0:i.elevationValue)||(null==(l=t.object)?void 0:l.value)||"N/A"}`})]})}),S=x===u.wP.color_breakpoints?e=>(0,l.JV)(P,e,y):P;return new a.A(p({id:`grid-layer-${e.slice_id}-${JSON.stringify(y)}`,data:m,cellSize:e.grid_size,extruded:e.extruded,colorDomain:x===u.wP.color_breakpoints&&b?[0,b.length]:void 0,colorRange:b,outline:!1,getElevationValue:P,getColorValue:S},(0,l.T$)({formData:e,setDataMask:s,setTooltip:o,setTooltipContent:w,filterState:f,onContextMenu:g,emitCrossFilters:h}),{opacity:(null==f?void 0:f.value)?.1:1}))};function h(e){return e.map(e=>e.position)}let v=function({formData:e,payload:t,filterState:o}){var r;let i=t.data.features;e.js_data_mutator&&(i=(0,n.A)(e.js_data_mutator)(i));let s=(0,l.g_)(e.js_agg_function,e=>e.weight),c=new Set(null==o||null==(r=o.value)?void 0:r.map(e=>`${e[0]},${e[1]}`));return new a.A({id:`grid-highlight-layer-${e.slice_id}-${JSON.stringify(null==o?void 0:o.value)}`,data:i,cellSize:e.grid_size,extruded:e.extruded,colorDomain:[0,1],colorRange:[g.LC,g.Fe],colorAggregation:"MAX",outline:!1,getElevationValue:s,getColorWeight:e=>+!!c.has(`${e.position[0]},${e.position[1]}`),opacity:1})},_=(0,s.y)(f,h,v)},23412:(e,t,o)=>{"use strict";o.r(t),o.d(t,{default:()=>w,getLayer:()=>b,getPoints:()=>P});var r=o(2445),a=o(24002),i=o(15022),l=o(25879),n=o.n(l),s=o(82654),c=o(5988),u=o(92329),d=o(25542),g=o(77117),p=o(98186),f=o(17181);function h(){return(h=Object.assign||function(e){for(var t=1;t<arguments.length;t++){var o=arguments[t];for(var r in o)Object.prototype.hasOwnProperty.call(o,r)&&(e[r]=o[r])}return e}).apply(this,arguments)}let v={fillColor:"fillColor",color:"fillColor",fill:"fillColor","fill-color":"fillColor",strokeColor:"strokeColor","stroke-color":"strokeColor","stroke-width":"strokeWidth"},_=[],m=(e,t,o)=>{if((null==e?void 0:e.features)&&e.features.forEach(r=>{m(r,t,e.extraProps||o)}),null==e?void 0:e.geometry){var r;let a,i=h({},e,{properties:(r=e.properties,a={},Object.keys(r).forEach(e=>{e in v?a[v[e]]=r[e]:a[e]=r[e]}),"string"==typeof r.fillColor&&(a.fillColor=(0,c.hexToRGB)(r.fillColor)),"string"==typeof r.strokeColor&&(a.strokeColor=(0,c.hexToRGB)(r.strokeColor)),h({},a,t))});i.extraProps||(i.extraProps=o),_.push(i)}};function y(e){var t;return(null==(t=e.object)?void 0:t.extraProps)&&(0,r.Y)("div",{className:"deckgl-tooltip",children:Object.keys(e.object.extraProps).map((t,o)=>{var a;return(0,r.Y)(g.A,{label:`${t}: `,value:`${null==(a=e.object.extraProps)?void 0:a[t]}`},`prop-${o}`)})})}let x=e=>{var t;return null==e||null==(t=e.properties)?void 0:t.strokeColor},b=function({formData:e,onContextMenu:t,filterState:o,setDataMask:r,payload:a,setTooltip:l,emitCrossFilters:n}){let s=e.fill_color_picker,c=e.stroke_color_picker,g=[s.r,s.g,s.b,255*s.a],p=[c.r,c.g,c.b,255*c.a],v={};g[3]>0&&(v.fillColor=g),p[3]>0&&(v.strokeColor=p),_=[],m(a.data,v);let b=_;return e.js_data_mutator&&(b=(0,u.A)(e.js_data_mutator)(_)),new i.A(h({id:`geojson-layer-${e.slice_id}`,data:b,extruded:e.extruded,filled:e.filled,stroked:e.stroked,getFillColor:e=>((e,t)=>{var o,r;if(t){if(JSON.stringify(e.geometry.coordinates)===JSON.stringify(null==t?void 0:t[0]))return f.Fe;let o=null==e||null==(r=e.properties)?void 0:r.fillColor;return o[3]=125,o}return null==e||null==(o=e.properties)?void 0:o.fillColor})(e,null==o?void 0:o.value),getLineColor:x,getLineWidth:e.line_width||1,pointRadiusScale:e.point_radius_scale,lineWidthUnits:e.line_width_unit},(0,d.T$)({formData:e,setTooltip:l,setTooltipContent:y,setDataMask:r,filterState:o,onContextMenu:t,emitCrossFilters:n})))};function P(e){return e.reduce((e,t)=>{let o=n()(t);return o?[...e,[o[0],o[1]],[o[2],o[3]]]:e},[])}let w=(0,a.memo)(e=>{var t;let o=(0,a.useRef)(),i=(0,a.useCallback)(e=>{let{current:t}=o;t&&t.setTooltip(e)},[]),{formData:l,payload:n,setControlValue:c,onAddFilter:u,height:d,width:g}=e,f=(0,a.useMemo)(()=>l.autozoom&&(P(n.data.features)||[]).length?(0,p.A)(e.viewport,{width:g,height:d,points:P(n.data.features)||[]}):e.viewport,[l.autozoom,d,null==n||null==(t=n.data)?void 0:t.features,e.viewport,g]),h=b({onContextMenu:e.onContextMenu,filterState:e.filterState,setDataMask:e.setDataMask,setTooltip:i,onAddFilter:u,payload:n,formData:l,emitCrossFilters:e.emitCrossFilters});return(0,r.Y)(s.S,{ref:o,mapboxApiAccessToken:n.data.mapboxApiKey,viewport:f,layers:[h],mapStyle:l.mapbox_style,setControlValue:c,height:d,width:g})})},25732:(e,t,o)=>{"use strict";o.r(t),o.d(t,{default:()=>_,getHighlightLayer:()=>v,getLayer:()=>f,getPoints:()=>h});var r=o(2445),a=o(72192),i=o(15536),l=o(20082),n=o(25542),s=o(92329),c=o(1376),u=o(73107),d=o(77117),g=o(17181);function p(){return(p=Object.assign||function(e){for(var t=1;t<arguments.length;t++){var o=arguments[t];for(var r in o)Object.prototype.hasOwnProperty.call(o,r)&&(e[r]=o[r])}return e}).apply(this,arguments)}let f=function({formData:e,payload:t,setTooltip:o,onContextMenu:c,filterState:g,setDataMask:f,emitCrossFilters:h}){let v=e.color_scheme,_=i.getScale(v),m=t.data.features;e.js_data_mutator&&(m=(0,s.A)(e.js_data_mutator)(m));let y=e.color_scheme_type,x=(0,n.XC)({defaultBreakpointsColor:e.default_breakpoint_color,colorBreakpoints:e.color_breakpoints,fixedColor:e.color_picker,colorSchemeType:y,colorScale:_}),b=e.color_breakpoints,P=(0,n.g_)(e.js_agg_function,e=>e.weight),w=y===l.wP.color_breakpoints?e=>(0,n.JV)(P,e,b):P,S=(0,u.j1)(e,t=>{var o,a,i;let l;return l=(null==(o=e.size)?void 0:o.label)||(null==(a=e.size)?void 0:a.value)||"Height",(0,r.FD)("div",{className:"deckgl-tooltip",children:[u.EO.centroid(t),(0,r.Y)(d.A,{label:`${l}: `,value:`${null==(i=t.object)?void 0:i.elevationValue}`})]})});return new a.A(p({id:`hex-layer-${e.slice_id}-${JSON.stringify(b)}`,data:m,radius:e.grid_size,extruded:e.extruded,colorDomain:y===l.wP.color_breakpoints&&x?[0,x.length]:void 0,colorRange:x,outline:!1,getElevationValue:P,getColorValue:w},(0,n.T$)({formData:e,setTooltip:o,setTooltipContent:S,setDataMask:f,filterState:g,onContextMenu:c,emitCrossFilters:h}),{opacity:(null==g?void 0:g.value)?.3:1}))};function h(e){return e.map(e=>e.position)}let v=function({formData:e,payload:t,filterState:o}){var r;let i=t.data.features;e.js_data_mutator&&(i=(0,s.A)(e.js_data_mutator)(i));let l=(0,n.g_)(e.js_agg_function,e=>e.weight),c=new Set(null==o||null==(r=o.value)?void 0:r.map(e=>`${e[0]},${e[1]}`));return new a.A({id:`hex-highlight-layer-${e.slice_id}-${JSON.stringify(null==o?void 0:o.value)}`,data:i,radius:e.grid_size,extruded:e.extruded,colorDomain:[0,1],colorRange:[g.LC,g.Fe],colorAggregation:"MAX",outline:!1,getElevationValue:l,getColorWeight:e=>+!!c.has(`${e.position[0]},${e.position[1]}`),opacity:1})},_=(0,c.y)(f,h,v)},32244:(e,t,o)=>{"use strict";o.r(t),o.d(t,{default:()=>m,getHighlightLayer:()=>_,getLayer:()=>h,getPoints:()=>v});var r=o(2445),a=o(96582),i=o(91054),l=o(8894),n=o(20082),s=o(25542),c=o(92329),u=o(1376),d=o(77117),g=o(73107),p=o(17181);function f(){return(f=Object.assign||function(e){for(var t=1;t<arguments.length;t++){var o=arguments[t];for(var r in o)Object.prototype.hasOwnProperty.call(o,r)&&(e[r]=o[r])}return e}).apply(this,arguments)}let h=({formData:e,payload:t,setTooltip:o,setDataMask:n,onContextMenu:u,filterState:p,emitCrossFilters:h})=>{var v,_,m;let y,{intensity:x=1,radius_pixels:b=30,aggregation:P="SUM",js_data_mutator:w,linear_color_scheme:S}=e,C=t.data.features;w&&(C=(0,c.A)(e.js_data_mutator)(C));let k=null==(_=(0,l.A)())||null==(v=_.get(S))?void 0:v.createLinearScale([0,6]),j=e.color_scheme_type,A=null==(m=(0,s.XC)({defaultBreakpointsColor:e.default_breakpoint_color,colorBreakpoints:e.color_breakpoints,fixedColor:e.color_picker,colorSchemeType:j,colorScale:k}))?void 0:m.reverse(),L=(y=t=>{var o,a,l,n,s,c;let u=(null==(o=e.size)?void 0:o.label)||(null==(a=e.size)?void 0:a.value)||"Weight",g=null==(l=t.coordinate)?void 0:l[0],p=null==(n=t.coordinate)?void 0:n[1],f=e.tooltip_template||e.tooltip_contents&&e.tooltip_contents.length>0,h=t.object&&Object.keys(t.object).length>0;return(0,r.FD)("div",{className:"deckgl-tooltip",children:[(0,r.Y)(d.A,{label:`${(0,i.t)("Longitude and Latitude")}: `,value:`${null==g?void 0:g.toFixed(6)}, ${null==p?void 0:p.toFixed(6)}`}),(0,r.Y)(d.A,{label:"LON: ",value:null==g?void 0:g.toFixed(6)}),(0,r.Y)(d.A,{label:"LAT: ",value:null==p?void 0:p.toFixed(6)}),(0,r.Y)(d.A,{label:`${u}: `,value:`${(null==(s=t.object)?void 0:s.weight)||(null==(c=t.object)?void 0:c.value)||"Aggregated Cell"}`}),f&&!h&&(0,r.Y)(d.A,{label:`${(0,i.t)("Note")}: `,value:(0,i.t)("Custom fields not available in aggregated heatmap cells")})]})},t=>{var o,r;let a=null;if(t.coordinate&&(null==(r=t.layer)||null==(o=r.props)?void 0:o.data)){let[e,o]=t.coordinate,r=1/0;for(let i of t.layer.props.data)if(i.position){let[t,l]=i.position,n=Math.sqrt(Math.pow(e-t,2)+Math.pow(o-l,2));n<r&&(r=n,a=i)}}let i=f({},t,{object:a||t.object});return(0,g.j1)(e,y)(i)});return new a.A(f({id:`heatmap-layer-${e.slice_id}`,data:C,intensity:x,radiusPixels:b,colorRange:A,aggregation:P.toUpperCase(),getPosition:e=>e.position,getWeight:e=>e.weight?e.weight:1,opacity:.8,threshold:.03},(0,s.T$)({formData:e,setTooltip:o,setTooltipContent:L,setDataMask:n,filterState:p,onContextMenu:u,emitCrossFilters:h})))};function v(e){return e.map(e=>e.position)}let _=({formData:e,filterState:t,payload:o})=>{let{intensity:r=1,radius_pixels:i=30,aggregation:l="SUM",js_data_mutator:s}=e,u=o.data.features;s&&(u=(0,c.A)(e.js_data_mutator)(u));let d=u.filter(e=>(0,n.st)(e.position,null==t?void 0:t.value));return new a.A({id:`heatmap-layer-${e.slice_id}`,data:d,intensity:r,radiusPixels:i,colorRange:[[p.Fe[0],p.Fe[1],p.Fe[2],55],p.Fe],aggregation:l.toUpperCase(),getPosition:e=>e.position,getWeight:e=>e.weight?e.weight:1})},m=(0,u.y)(h,v,_)},38257:(e,t,o)=>{"use strict";o.r(t),o.d(t,{default:()=>j});var r=o(2445),a=o(24002),i=o(2404),l=o.n(i),n=o(79843),s=o(47257),c=o(95265),u=o(22074),d=o(82654),g=o(84193),p=o.n(g),f=o(2178),h=o(44758),v=o(86004),_=o(25732),m=o(63617),y=o(23412),x=o(40613),b=o(86722),P=o(32244),w=o(56244);let S={deck_grid:f.getLayer,deck_screengrid:h.getLayer,deck_path:v.getLayer,deck_hex:_.getLayer,deck_scatter:m.getLayer,deck_geojson:y.getLayer,deck_arc:x.getLayer,deck_polygon:b.getLayer,deck_heatmap:P.getLayer,deck_contour:w.getLayer};var C=o(98186);function k(){return(k=Object.assign||function(e){for(var t=1;t<arguments.length;t++){var o=arguments[t];for(var r in o)Object.prototype.hasOwnProperty.call(o,r)&&(e[r]=o[r])}return e}).apply(this,arguments)}let j=(0,a.memo)(e=>{let t=(0,a.useRef)(),o=(0,a.useCallback)(()=>{let t=k({},e.viewport),o=[...(0,b.getPoints)(e.payload.data.features.deck_polygon||[]),...(0,v.getPoints)(e.payload.data.features.deck_path||[]),...(0,f.getPoints)(e.payload.data.features.deck_grid||[]),...(0,m.getPoints)(e.payload.data.features.deck_scatter||[]),...(0,w.getPoints)(e.payload.data.features.deck_contour||[]),...(0,P.getPoints)(e.payload.data.features.deck_heatmap||[]),...(0,_.getPoints)(e.payload.data.features.deck_hex||[]),...(0,x.getPoints)(e.payload.data.features.deck_arc||[]),...(0,y.getPoints)(e.payload.data.features.deck_geojson||[]),...(0,h.getPoints)(e.payload.data.features.deck_screengrid||[])];return e.formData&&(t=(0,C.A)(t,{width:e.width,height:e.height,points:o})),t.zoom<0&&(t.zoom=0),t},[e]),[i,g]=(0,a.useState)(o()),[j,A]=(0,a.useState)({}),L=(0,a.useCallback)(e=>{let{current:o}=t;o&&o.setTooltip(e)},[]),O=(0,a.useCallback)((e,t,o)=>o?o.indexOf(e):t,[]),T=(0,a.useCallback)((e,t,o)=>{var r,a;let i=t.layer_filter_scope,l=[...e.form_data.extra_filters||[],...t.extra_filters||[]],s=[...(null==(r=e.form_data)?void 0:r.adhoc_filters)||[]];if(i){let e=t.filter_data_mapping||{},r=!1;if(Object.entries(i).forEach(([t,a])=>{if((0,n.A)(a).includes(o)){r=!0;let o=e[t]||[];l.push(...o)}}),r){let e=t.adhoc_filters||[];s.push(...e)}}else{let e=(null==(a=t.extra_form_data)?void 0:a.filters)||[];l.push(...e);let o=t.adhoc_filters||[];s.push(...o)}return{extraFilters:l,adhocFilters:s}},[]),$=(0,a.useCallback)((t,o)=>S[t.form_data.viz_type]({formData:t.form_data,payload:o,setTooltip:L,datasource:e.datasource,onSelect:e.onSelect}),[e.onSelect,e.datasource,L]),D=(0,a.useCallback)((e,t,o)=>{let r=O(e.slice_id,o,t.deck_slices),a=[],i=[];if((window.location.href||"").includes("explore"))i=(t.adhoc_filters||[]).map(e=>{if(!(0,s.A)(null==e?void 0:e.layerFilterScope)||Array.isArray(e.layerFilterScope)&&e.layerFilterScope.length>0&&(e.layerFilterScope.includes(-1)||e.layerFilterScope.includes(r)))return e}).filter(e=>(0,s.A)(e));else{let{extraFilters:o,adhocFilters:l}=T(e,t,r);a=o,i=l}let l=k({},e,{form_data:k({},e.form_data,{extra_filters:a,adhoc_filters:i})}),n=function e(t,o,r=!0,a={}){let i;if(!t.datasource)return;let l=new(p())("/"),n=function(e="base"){let t="/explore/";return["json","csv","query","results","samples"].includes(e)&&(t="/superset/explore_json/"),t}(o),s=l.search(!0);Object.keys(a).forEach(e=>{s[e]=a[e]}),i=new Set,s.form_data=JSON.stringify(t,(e,t)=>{if("object"==typeof t&&null!==t){if(i.has(t))try{return JSON.parse(JSON.stringify(t))}catch(e){return}i.add(t)}return t}),"standalone"===o&&(s.standalone="true");let c=l.directory(n).search(s).toString();return!r&&c.length>8e3?e({datasource:t.datasource,viz_type:t.viz_type},o,!1,{URL_IS_TOO_LONG_TO_SHARE:null}):c}(l.form_data,"json");n&&c.A.get({endpoint:n}).then(({json:e})=>{let t=$(l,e);A(e=>k({},e,{[l.slice_id]:t}))}).catch(e=>{console.error(`Error loading layer for slice ${l.slice_id}:`,e)})},[O,T,$]),R=(0,a.useCallback)((e,t,r)=>{g(o()),A({}),t.data.slices.forEach((t,o)=>{D(t,e,o)})},[o,D]),E=(0,u.Z)(e.formData.deck_slices);(0,a.useEffect)(()=>{let{formData:t,payload:o}=e;l()(E,t.deck_slices)||R(t,o)},[R,E,e]);let{payload:M,formData:F,setControlValue:z,height:N,width:I}=e,V=Object.values(j);return(0,r.Y)(d.S,{ref:t,mapboxApiAccessToken:M.data.mapboxApiKey,viewport:i,layers:V,mapStyle:F.mapbox_style,setControlValue:z,onViewportChange:g,height:N,width:I})})},40613:(e,t,o)=>{"use strict";o.r(t),o.d(t,{default:()=>C,getHighlightLayer:()=>S,getLayer:()=>w,getPoints:()=>P});var r=o(2445),a=o(15473),i=o(38706),l=o(82849),n=o(59),s=o(98413);let c=`\
+uniform arcUniforms {
+  bool greatCircle;
+  bool useShortestPath;
+  float numSegments;
+  float widthScale;
+  float widthMinPixels;
+  float widthMaxPixels;
+  highp int widthUnits;
+} arc;
+`,u={name:"arc",vs:c,fs:c,uniformTypes:{greatCircle:"f32",useShortestPath:"f32",numSegments:"f32",widthScale:"f32",widthMinPixels:"f32",widthMaxPixels:"f32",widthUnits:"i32"}},d=`\
+#version 300 es
+#define SHADER_NAME arc-layer-vertex-shader
+in vec4 instanceSourceColors;
+in vec4 instanceTargetColors;
+in vec3 instanceSourcePositions;
+in vec3 instanceSourcePositions64Low;
+in vec3 instanceTargetPositions;
+in vec3 instanceTargetPositions64Low;
+in vec3 instancePickingColors;
+in float instanceWidths;
+in float instanceHeights;
+in float instanceTilts;
+out vec4 vColor;
+out vec2 uv;
+out float isValid;
+float paraboloid(float distance, float sourceZ, float targetZ, float ratio) {
+float deltaZ = targetZ - sourceZ;
+float dh = distance * instanceHeights;
+if (dh == 0.0) {
+return sourceZ + deltaZ * ratio;
+}
+float unitZ = deltaZ / dh;
+float p2 = unitZ * unitZ + 1.0;
+float dir = step(deltaZ, 0.0);
+float z0 = mix(sourceZ, targetZ, dir);
+float r = mix(ratio, 1.0 - ratio, dir);
+return sqrt(r * (p2 - r)) * dh + z0;
+}
+vec2 getExtrusionOffset(vec2 line_clipspace, float offset_direction, float width) {
+vec2 dir_screenspace = normalize(line_clipspace * project.viewportSize);
+dir_screenspace = vec2(-dir_screenspace.y, dir_screenspace.x);
+return dir_screenspace * offset_direction * width / 2.0;
+}
+float getSegmentRatio(float index) {
+return smoothstep(0.0, 1.0, index / (arc.numSegments - 1.0));
+}
+vec3 interpolateFlat(vec3 source, vec3 target, float segmentRatio) {
+float distance = length(source.xy - target.xy);
+float z = paraboloid(distance, source.z, target.z, segmentRatio);
+float tiltAngle = radians(instanceTilts);
+vec2 tiltDirection = normalize(target.xy - source.xy);
+vec2 tilt = vec2(-tiltDirection.y, tiltDirection.x) * z * sin(tiltAngle);
+return vec3(
+mix(source.xy, target.xy, segmentRatio) + tilt,
+z * cos(tiltAngle)
+);
+}
+float getAngularDist (vec2 source, vec2 target) {
+vec2 sourceRadians = radians(source);
+vec2 targetRadians = radians(target);
+vec2 sin_half_delta = sin((sourceRadians - targetRadians) / 2.0);
+vec2 shd_sq = sin_half_delta * sin_half_delta;
+float a = shd_sq.y + cos(sourceRadians.y) * cos(targetRadians.y) * shd_sq.x;
+return 2.0 * asin(sqrt(a));
+}
+vec3 interpolateGreatCircle(vec3 source, vec3 target, vec3 source3D, vec3 target3D, float angularDist, float t) {
+vec2 lngLat;
+if(abs(angularDist - PI) < 0.001) {
+lngLat = (1.0 - t) * source.xy + t * target.xy;
+} else {
+float a = sin((1.0 - t) * angularDist);
+float b = sin(t * angularDist);
+vec3 p = source3D.yxz * a + target3D.yxz * b;
+lngLat = degrees(vec2(atan(p.y, -p.x), atan(p.z, length(p.xy))));
+}
+float z = paraboloid(angularDist * EARTH_RADIUS, source.z, target.z, t);
+return vec3(lngLat, z);
+}
+void main(void) {
+geometry.worldPosition = instanceSourcePositions;
+geometry.worldPositionAlt = instanceTargetPositions;
+float segmentIndex = float(gl_VertexID / 2);
+float segmentSide = mod(float(gl_VertexID), 2.) == 0. ? -1. : 1.;
+float segmentRatio = getSegmentRatio(segmentIndex);
+float prevSegmentRatio = getSegmentRatio(max(0.0, segmentIndex - 1.0));
+float nextSegmentRatio = getSegmentRatio(min(arc.numSegments - 1.0, segmentIndex + 1.0));
+float indexDir = mix(-1.0, 1.0, step(segmentIndex, 0.0));
+isValid = 1.0;
+uv = vec2(segmentRatio, segmentSide);
+geometry.uv = uv;
+geometry.pickingColor = instancePickingColors;
+vec4 curr;
+vec4 next;
+vec3 source;
+vec3 target;
+if ((arc.greatCircle || project.projectionMode == PROJECTION_MODE_GLOBE) && project.coordinateSystem == COORDINATE_SYSTEM_LNGLAT) {
+source = project_globe_(vec3(instanceSourcePositions.xy, 0.0));
+target = project_globe_(vec3(instanceTargetPositions.xy, 0.0));
+float angularDist = getAngularDist(instanceSourcePositions.xy, instanceTargetPositions.xy);
+vec3 prevPos = interpolateGreatCircle(instanceSourcePositions, instanceTargetPositions, source, target, angularDist, prevSegmentRatio);
+vec3 currPos = interpolateGreatCircle(instanceSourcePositions, instanceTargetPositions, source, target, angularDist, segmentRatio);
+vec3 nextPos = interpolateGreatCircle(instanceSourcePositions, instanceTargetPositions, source, target, angularDist, nextSegmentRatio);
+if (abs(currPos.x - prevPos.x) > 180.0) {
+indexDir = -1.0;
+isValid = 0.0;
+} else if (abs(currPos.x - nextPos.x) > 180.0) {
+indexDir = 1.0;
+isValid = 0.0;
+}
+nextPos = indexDir < 0.0 ? prevPos : nextPos;
+nextSegmentRatio = indexDir < 0.0 ? prevSegmentRatio : nextSegmentRatio;
+if (isValid == 0.0) {
+nextPos.x += nextPos.x > 0.0 ? -360.0 : 360.0;
+float t = ((currPos.x > 0.0 ? 180.0 : -180.0) - currPos.x) / (nextPos.x - currPos.x);
+currPos = mix(currPos, nextPos, t);
+segmentRatio = mix(segmentRatio, nextSegmentRatio, t);
+}
+vec3 currPos64Low = mix(instanceSourcePositions64Low, instanceTargetPositions64Low, segmentRatio);
+vec3 nextPos64Low = mix(instanceSourcePositions64Low, instanceTargetPositions64Low, nextSegmentRatio);
+curr = project_position_to_clipspace(currPos, currPos64Low, vec3(0.0), geometry.position);
+next = project_position_to_clipspace(nextPos, nextPos64Low, vec3(0.0));
+} else {
+vec3 source_world = instanceSourcePositions;
+vec3 target_world = instanceTargetPositions;
+if (arc.useShortestPath) {
+source_world.x = mod(source_world.x + 180., 360.0) - 180.;
+target_world.x = mod(target_world.x + 180., 360.0) - 180.;
+float deltaLng = target_world.x - source_world.x;
+if (deltaLng > 180.) target_world.x -= 360.;
+if (deltaLng < -180.) source_world.x -= 360.;
+}
+source = project_position(source_world, instanceSourcePositions64Low);
+target = project_position(target_world, instanceTargetPositions64Low);
+float antiMeridianX = 0.0;
+if (arc.useShortestPath) {
+if (project.projectionMode == PROJECTION_MODE_WEB_MERCATOR_AUTO_OFFSET) {
+antiMeridianX = -(project.coordinateOrigin.x + 180.) / 360. * TILE_SIZE;
+}
+float thresholdRatio = (antiMeridianX - source.x) / (target.x - source.x);
+if (prevSegmentRatio <= thresholdRatio && nextSegmentRatio > thresholdRatio) {
+isValid = 0.0;
+indexDir = sign(segmentRatio - thresholdRatio);
+segmentRatio = thresholdRatio;
+}
+}
+nextSegmentRatio = indexDir < 0.0 ? prevSegmentRatio : nextSegmentRatio;
+vec3 currPos = interpolateFlat(source, target, segmentRatio);
+vec3 nextPos = interpolateFlat(source, target, nextSegmentRatio);
+if (arc.useShortestPath) {
+if (nextPos.x < antiMeridianX) {
+currPos.x += TILE_SIZE;
+nextPos.x += TILE_SIZE;
+}
+}
+curr = project_common_position_to_clipspace(vec4(currPos, 1.0));
+next = project_common_position_to_clipspace(vec4(nextPos, 1.0));
+geometry.position = vec4(currPos, 1.0);
+}
+float widthPixels = clamp(
+project_size_to_pixel(instanceWidths * arc.widthScale, arc.widthUnits),
+arc.widthMinPixels, arc.widthMaxPixels
+);
+vec3 offset = vec3(
+getExtrusionOffset((next.xy - curr.xy) * indexDir, segmentSide, widthPixels),
+0.0);
+DECKGL_FILTER_SIZE(offset, geometry);
+DECKGL_FILTER_GL_POSITION(curr, geometry);
+gl_Position = curr + vec4(project_pixel_size_to_clipspace(offset.xy), 0.0, 0.0);
+vec4 color = mix(instanceSourceColors, instanceTargetColors, segmentRatio);
+vColor = vec4(color.rgb, color.a * layer.opacity);
+DECKGL_FILTER_COLOR(vColor, geometry);
+}
+`,g=`\
+#version 300 es
+#define SHADER_NAME arc-layer-fragment-shader
+precision highp float;
+in vec4 vColor;
+in vec2 uv;
+in float isValid;
+out vec4 fragColor;
+void main(void) {
+if (isValid == 0.0) {
+discard;
+}
+fragColor = vColor;
+geometry.uv = uv;
+DECKGL_FILTER_COLOR(fragColor, geometry);
+}
+`,p=[0,0,0,255],f={getSourcePosition:{type:"accessor",value:e=>e.sourcePosition},getTargetPosition:{type:"accessor",value:e=>e.targetPosition},getSourceColor:{type:"accessor",value:p},getTargetColor:{type:"accessor",value:p},getWidth:{type:"accessor",value:1},getHeight:{type:"accessor",value:1},getTilt:{type:"accessor",value:0},greatCircle:!1,numSegments:{type:"number",value:50,min:1},widthUnits:"pixels",widthScale:{type:"number",value:1,min:0},widthMinPixels:{type:"number",value:0,min:0},widthMaxPixels:{type:"number",value:Number.MAX_SAFE_INTEGER,min:0}};class h extends a.A{getBounds(){return this.getAttributeManager()?.getBounds(["instanceSourcePositions","instanceTargetPositions"])}getShaders(){return super.getShaders({vs:d,fs:g,modules:[i.A,l.A,u]})}get wrapLongitude(){return!1}initializeState(){this.getAttributeManager().addInstanced({instanceSourcePositions:{size:3,type:"float64",fp64:this.use64bitPositions(),transition:!0,accessor:"getSourcePosition"},instanceTargetPositions:{size:3,type:"float64",fp64:this.use64bitPositions(),transition:!0,accessor:"getTargetPosition"},instanceSourceColors:{size:this.props.colorFormat.length,type:"unorm8",transition:!0,accessor:"getSourceColor",defaultValue:p},instanceTargetColors:{size:this.props.colorFormat.length,type:"unorm8",transition:!0,accessor:"getTargetColor",defaultValue:p},instanceWidths:{size:1,transition:!0,accessor:"getWidth",defaultValue:1},instanceHeights:{size:1,transition:!0,accessor:"getHeight",defaultValue:1},instanceTilts:{size:1,transition:!0,accessor:"getTilt",defaultValue:0}})}updateState(e){super.updateState(e),e.changeFlags.extensionsChanged&&(this.state.model?.destroy(),this.state.model=this._getModel(),this.getAttributeManager().invalidateAll())}draw({uniforms:e}){let{widthUnits:t,widthScale:o,widthMinPixels:r,widthMaxPixels:a,greatCircle:i,wrapLongitude:l,numSegments:s}=this.props,c={numSegments:s,widthUnits:n.p5[t],widthScale:o,widthMinPixels:r,widthMaxPixels:a,greatCircle:i,useShortestPath:l},u=this.state.model;u.shaderInputs.setProps({arc:c}),u.setVertexCount(2*s),u.draw(this.context.renderPass)}_getModel(){return new s.K(this.context.device,{...this.getShaders(),id:this.props.id,bufferLayout:this.getAttributeManager().getBufferLayouts(),topology:"triangle-strip",isInstanced:!0})}}h.layerName="ArcLayer",h.defaultProps=f;var v=o(20082),_=o(25542),m=o(1376),y=o(73107),x=o(17181);function b(){return(b=Object.assign||function(e){for(var t=1;t<arguments.length;t++){var o=arguments[t];for(var r in o)Object.prototype.hasOwnProperty.call(o,r)&&(e[r]=o[r])}return e}).apply(this,arguments)}function P(e){let t=[];return e.forEach(e=>{t.push(e.sourcePosition),t.push(e.targetPosition)}),t}let w=function({formData:e,payload:t,setTooltip:o,filterState:a,setDataMask:i,onContextMenu:l,emitCrossFilters:n}){let s=t.data.features,c=e.color_picker,u=e.target_color_picker,d=e.color_scheme_type;return new h(b({data:s,getSourceColor:e=>d===v.wP.fixed_color?[c.r,c.g,c.b,255*c.a]:e.sourceColor||e.color||[c.r,c.g,c.b,255*c.a],getTargetColor:e=>d===v.wP.fixed_color?[u.r,u.g,u.b,255*u.a]:e.targetColor||e.color||[u.r,u.g,u.b,255*u.a],id:`path-layer-${e.slice_id}`,getWidth:e.stroke_width?e.stroke_width:3},(0,_.T$)({formData:e,setTooltip:o,setTooltipContent:(0,y.j1)(e,e=>(0,r.FD)("div",{className:"deckgl-tooltip",children:[y.EO.arcPositions(e),y.EO.category(e)]})),onContextMenu:l,setDataMask:i,filterState:a,emitCrossFilters:n}),{opacity:(null==a?void 0:a.value)?.1:1}))},S=function({formData:e,payload:t,filterState:o}){let r=t.data.features,a=e=>{let t=null==o?void 0:o.value[0],r=null==o?void 0:o.value[1];return t&&r&&e.sourcePosition[0]===t[0]&&e.sourcePosition[1]===t[1]&&e.targetPosition[0]===r[0]&&e.targetPosition[1]===r[1]?x.Fe:x.LC};return new h({data:r,getSourceColor:a,getTargetColor:a,id:`path-hihglight-layer-${e.slice_id}`,getWidth:e.stroke_width?e.stroke_width:3})},C=(0,m.c)(w,P,S)},42634:()=>{},56244:(e,t,o)=>{"use strict";o.r(t),o.d(t,{default:()=>y,getHighlightLayer:()=>m,getLayer:()=>v,getPoints:()=>_});var r=o(2445),a=o(82644),i=o(43850),l=o(91054),n=o(25542),s=o(92329),c=o(1376),u=o(77117),d=o(73107),g=o(17181);function p(){return(p=Object.assign||function(e){for(var t=1;t<arguments.length;t++){var o=arguments[t];for(var r in o)Object.prototype.hasOwnProperty.call(o,r)&&(e[r]=o[r])}return e}).apply(this,arguments)}function f(e){var t,o;return(0,r.FD)("div",{className:"deckgl-tooltip",children:[d.EO.centroid(e),(0,r.Y)(u.A,{label:(0,l.t)("Threshold: "),value:`${null==e||null==(o=e.object)||null==(t=o.contour)?void 0:t.threshold}`})]})}function h(e){var t,o;return(0,r.FD)("div",{className:"deckgl-tooltip",children:[(0,r.Y)(u.A,{label:(0,l.t)("Centroid (Longitude and Latitude): "),value:`(${null==e?void 0:e.coordinate[0]}, ${null==e?void 0:e.coordinate[1]})`}),(0,r.Y)(u.A,{label:(0,l.t)("Threshold: "),value:`${null==e||null==(o=e.object)||null==(t=o.contour)?void 0:t.threshold}`})]})}let v=function({formData:e,payload:t,filterState:o,setDataMask:r,onContextMenu:i,setTooltip:l,emitCrossFilters:c}){let{aggregation:u="SUM",js_data_mutator:g,contours:h,cellSize:v="200"}=e,_=t.data.features,m=new Map;_.forEach(e=>{if(e.position){var t;let o=`${Math.floor(1e3*e.position[0])},${Math.floor(1e3*e.position[1])}`;m.has(o)||m.set(o,[]),null==(t=m.get(o))||t.push(e.originalData||e)}});let y=null==h?void 0:h.map(e=>{let{lowerThreshold:t,upperThreshold:o,color:r,strokeWidth:a}=e;return o?{threshold:[t,o],color:[r.r,r.g,r.b]}:{threshold:t,color:[r.r,r.g,r.b],strokeWidth:a}});return g&&(_=(0,s.A)(e.js_data_mutator)(_)),new a.A(p({id:`contourLayer-${e.slice_id}`,data:_,contours:y,cellSize:Number(v||"200"),aggregation:u.toUpperCase(),getPosition:e=>e.position,getWeight:e=>e.weight||0},(0,n.T$)({formData:e,setTooltip:l,setTooltipContent:t=>{let o=[];if(t.coordinate){let e=`${Math.floor(1e3*t.coordinate[0])},${Math.floor(1e3*t.coordinate[1])}`,r=m.get(e)||[];o.push(...r);for(let e=-1;e<=1;e+=1)for(let r=-1;r<=1;r+=1)if(0!==e||0!==r){let a=`${Math.floor(1e3*t.coordinate[0])+e},${Math.floor(1e3*t.coordinate[1])+r}`,i=m.get(a)||[];o.push(...i)}if(o.length>0){let e=p({},t.object,{nearbyPoints:o.slice(0,5),totalPoints:o.length},o[0]);Object.assign(t,{object:e})}}return(0,d.j1)(e,f)(t)},onContextMenu:i,setDataMask:r,filterState:o,emitCrossFilters:c})))};function _(e){return e.map(e=>e.position)}let m=function({formData:e,filterState:t,setDataMask:o,onContextMenu:r,setTooltip:a,emitCrossFilters:l}){let s=null==t?void 0:t.value[0],c=null==t?void 0:t.value[1],u=s[0],d=c[0],f=s[1],v=c[1];return new i.A(p({id:`contour-highlight-layer-${e.slice_id}`,data:[{polygon:[[u,f],[d,f],[d,v],[u,v],[u,f]]}],getPolygon:e=>e.polygon,getFillColor:[g.Fe[0],g.Fe[1],g.Fe[2],100],getLineColor:g.Fe,getLineWidth:4,filled:!0,stroked:!0},(0,n.T$)({formData:e,setTooltip:a,setTooltipContent:h,onContextMenu:r,setDataMask:o,filterState:t,emitCrossFilters:l})))},y=(0,c.y)(v,_,m)},63617:(e,t,o)=>{"use strict";o.r(t),o.d(t,{default:()=>_,getHighlightLayer:()=>v,getLayer:()=>h,getPoints:()=>f});var r=o(2445),a=o(49924),i=o(91054),l=o(20082),n=o(25542),s=o(1376),c=o(73107),u=o(77117);function d(e,t){return"square_m"===e?Math.sqrt(t/Math.PI):"radius_m"===e?t:"radius_km"===e?1e3*t:"radius_miles"===e?1609.34*t:"square_km"===e?1e3*Math.sqrt(t/Math.PI):"square_miles"===e?1609.34*Math.sqrt(t/Math.PI):null}var g=o(17181);function p(){return(p=Object.assign||function(e){for(var t=1;t<arguments.length;t++){var o=arguments[t];for(var r in o)Object.prototype.hasOwnProperty.call(o,r)&&(e[r]=o[r])}return e}).apply(this,arguments)}function f(e){return e.map(e=>e.position)}let h=function({formData:e,payload:t,setTooltip:o,setDataMask:l,filterState:s,onContextMenu:g,datasource:f,emitCrossFilters:h}){var v;let _=t.data.features.map(t=>{let o=d(e.point_unit,t.radius)||10;if(e.multiplier&&(o*=e.multiplier),t.color)return p({},t,{radius:o});let r=e.color_picker||{r:0,g:0,b:0,a:1},a=[r.r,r.g,r.b,255*r.a];return p({},t,{radius:o,color:a})});return new a.A(p({id:`scatter-layer-${e.slice_id}`,data:_,fp64:!0,getFillColor:e=>e.color,getRadius:e=>e.radius,radiusMinPixels:Number(e.min_radius)||void 0,radiusMaxPixels:Number(e.max_radius)||void 0,stroked:!1},(0,n.T$)({formData:e,setTooltip:o,setTooltipContent:(v=null==f?void 0:f.verboseMap,(0,c.j1)(e,t=>{var o,a,l,n,s,c,d,g,p,f;let h=(null==v?void 0:v[e.point_radius_fixed.value])||("string"==typeof(f=null==(o=e.point_radius_fixed)?void 0:o.value)?f:(null==f?void 0:f.label)?f.label:(null==f?void 0:f.verbose_name)?f.verbose_name:(null==f?void 0:f.value)||"Metric");return(0,r.FD)("div",{className:"deckgl-tooltip",children:[(0,r.Y)(u.A,{label:`${(0,i.t)("Longitude and Latitude")}: `,value:`${null==(l=t.object)||null==(a=l.position)?void 0:a[0]}, ${null==(s=t.object)||null==(n=s.position)?void 0:n[1]}`}),(null==(c=t.object)?void 0:c.cat_color)&&(0,r.Y)(u.A,{label:`${(0,i.t)("Category")}: `,value:`${null==(d=t.object)?void 0:d.cat_color}`}),(null==(g=t.object)?void 0:g.metric)&&(0,r.Y)(u.A,{label:`${h}: `,value:`${null==(p=t.object)?void 0:p.metric}`})]})})),setDataMask:l,filterState:s,onContextMenu:g,emitCrossFilters:h}),{opacity:(null==s?void 0:s.value)?.3:1}))},v=function({formData:e,payload:t,filterState:o}){let r=t.data.features.map(t=>{let o=d(e.point_unit,t.radius)||10;return e.multiplier&&(o*=e.multiplier),p({},t,{radius:o})}).filter(e=>(0,l.st)(e.position,null==o?void 0:o.value));return new a.A({id:`scatter-highlight-layer-${e.slice_id}`,data:r,fp64:!0,getFillColor:()=>g.Fe,getRadius:e=>e.radius,radiusMinPixels:Number(e.min_radius)||void 0,radiusMaxPixels:Number(e.max_radius)||void 0,stroked:!1})},_=(0,s.c)(h,f,v)},86004:(e,t,o)=>{"use strict";o.r(t),o.d(t,{default:()=>f,getHighlightLayer:()=>p,getLayer:()=>d,getPoints:()=>g});var r=o(2445),a=o(23096),i=o(25542),l=o(92329),n=o(1376),s=o(73107),c=o(17181);function u(){return(u=Object.assign||function(e){for(var t=1;t<arguments.length;t++){var o=arguments[t];for(var r in o)Object.prototype.hasOwnProperty.call(o,r)&&(e[r]=o[r])}return e}).apply(this,arguments)}let d=function({formData:e,payload:t,onContextMenu:o,filterState:n,setDataMask:c,setTooltip:d,emitCrossFilters:g}){let p=e.color_picker,f=[p.r,p.g,p.b,255*p.a],h=t.data.features.map(t=>u({},t,{path:t.path,width:e.line_width,color:f}));return e.js_data_mutator&&(h=(0,l.A)(e.js_data_mutator)(h)),new a.A(u({id:`path-layer-${e.slice_id}`,getColor:e=>e.color,getPath:e=>e.path,getWidth:e=>e.width,data:h,rounded:!0,widthScale:1,widthUnits:e.line_width_unit},(0,i.T$)({formData:e,setTooltip:d,setTooltipContent:(0,s.j1)(e,e=>(0,r.FD)("div",{className:"deckgl-tooltip",children:[s.EO.position(e),s.EO.category(e)]})),setDataMask:c,filterState:n,onContextMenu:o,emitCrossFilters:g}),{opacity:(null==n?void 0:n.value)?.3:1}))};function g(e){let t=[];return e.forEach(e=>{t=t.concat(e.path)}),t}let p=function({formData:e,payload:t,filterState:o}){let r=c.Fe,i=t.data.features.map(t=>u({},t,{path:t.path,width:e.line_width,color:r}));e.js_data_mutator&&(i=(0,l.A)(e.js_data_mutator)(i));let n=i.filter(e=>JSON.stringify(e.path).replaceAll(" ","")===(null==o?void 0:o.value[0]));return new a.A({id:`path-highlight-layer-${e.slice_id}`,getColor:()=>c.Fe,getPath:e=>e.path,getWidth:e=>e.width,data:n,rounded:!0,widthScale:1,widthUnits:e.line_width_unit})},f=(0,n.y)(d,g,p)},86722:(e,t,o)=>{"use strict";o.r(t),o.d(t,{default:()=>b,getLayer:()=>y,getPoints:()=>x});var r=o(2445),a=o(24002),i=o(91054),l=o(43850),n=o(54392),s=o(77117),c=o(17181),u=o(25542),d=o(92329);function g(e){return"geometry"in e.polygon?e.polygon.geometry.coordinates[0]:e.polygon}var p=o(98186),f=o(82654),h=o(20082),v=o(71296),_=o(73107);function m(){return(m=Object.assign||function(e){for(var t=1;t<arguments.length;t++){var o=arguments[t];for(var r in o)Object.prototype.hasOwnProperty.call(o,r)&&(e[r]=o[r])}return e}).apply(this,arguments)}let y=function({formData:e,payload:t,setTooltip:o,filterState:a,setDataMask:n,onContextMenu:p,onSelect:f,emitCrossFilters:y}){let x,b=e.fill_color_picker,P=e.stroke_color_picker,w=e.default_breakpoint_color,S=[...t.data.features];e.js_data_mutator&&(S=(0,d.A)(e.js_data_mutator)(S));let C=e.color_scheme_type,k=e.metric?e.metric.label||e.metric:null,j=e=>e[k];switch(C){case h.wP.fixed_color:x=()=>[b.r,b.g,b.b,255*b.a];break;case h.wP.linear_palette:x=null===e.metric?()=>[b.r,b.g,b.b,255*b.a]:(0,c.L6)(e,S,j);break;case h.wP.color_breakpoints:{let t=e.color_breakpoints;x=e=>{var o;let r=(0,u.JV)(j,e,t),a=void 0!==r&&(null==(o=t[r-1])?void 0:o.color);return a?[a.r,a.g,a.b,255]:w?[w.r,w.g,w.b,255*w.a]:[v.DL.r,v.DL.g,v.DL.b,255*v.DL.a]};break}default:x=()=>[b.r,b.g,b.b,255*b.a]}let A=e=>{var t;let o=x(e)||c.LC,r=JSON.stringify(g(e)).replaceAll(" ","")===(null==a||null==(t=a.value)?void 0:t[0]);return(null==a?void 0:a.value)&&!r&&(o[3]/=3),o},L=(0,_.j1)(e,t=>{var o,a,l;return(0,r.FD)("div",{className:"deckgl-tooltip",children:[(null==(o=t.object)?void 0:o.name)&&(0,r.Y)(s.A,{label:`${(0,i.t)("name")}: `,value:`${t.object.name}`}),(null==(a=t.object)?void 0:a[null==e?void 0:e.line_column])&&(0,r.Y)(s.A,{label:`${e.line_column}: `,value:`${t.object[e.line_column]}`}),_.EO.centroid(t),_.EO.category(t),(null==e?void 0:e.metric)&&(0,r.Y)(s.A,{label:`${k}: `,value:`${null==(l=t.object)?void 0:l[k]}`})]})});return new l.A(m({id:`path-layer-${e.slice_id}`,data:S,filled:e.filled,stroked:e.stroked,getPolygon:g,getFillColor:A,getLineColor:P?[P.r,P.g,P.b,255*P.a]:void 0,getLineWidth:e.line_width,extruded:e.extruded,lineWidthUnits:e.line_width_unit,getElevation:e=>0===A(e)[3]?0:e.elevation,elevationScale:e.multiplier,fp64:!0,opacity:e.opacity?e.opacity/100:1},(0,u.T$)({formData:e,setTooltip:o,setTooltipContent:L,onSelect:f,filterState:a,onContextMenu:p,setDataMask:n,emitCrossFilters:y})))};function x(e){return e.flatMap(g)}let b=(0,a.memo)(e=>{let t=(0,a.useRef)(),o=(0,a.useCallback)(()=>{let t=m({},e.viewport);if(e.formData.autozoom){let o=e.payload.data.features||[];t=(0,p.A)(t,{width:e.width,height:e.height,points:x(o)})}return t.zoom<0&&(t.zoom=0),t},[e]),[i,l]=(0,a.useState)(o()),[s,u]=(0,a.useState)(e.payload.form_data);(0,a.useEffect)(()=>{let{payload:t}=e;t.form_data!==s&&(l(o()),u(t.form_data))},[o,e,s,i]);let d=(0,a.useCallback)(e=>{let{current:o}=t;o&&o.setTooltip(e)},[]),g=(0,a.useCallback)(()=>{let{formData:t,payload:o,onAddFilter:r,onContextMenu:a,setDataMask:i,filterState:l,emitCrossFilters:n}=e;return void 0===e.payload.data.features?[]:[y({formData:t,payload:o,onAddFilter:r,setTooltip:d,onContextMenu:a,setDataMask:i,filterState:l,emitCrossFilters:n})]},[d,e]),{payload:v,formData:_,setControlValue:b}=e,P=_.metric?_.metric.label||_.metric:null,w=_.color_scheme_type===h.wP.color_breakpoints?(0,c.BK)(_.color_breakpoints):(0,c.y1)(_,v.data.features,e=>e[P]);return(0,r.FD)("div",{style:{position:"relative"},children:[(0,r.Y)(f.S,{ref:t,viewport:i,layers:g(),setControlValue:b,mapStyle:_.mapbox_style,mapboxApiAccessToken:v.data.mapboxApiKey,width:e.width,height:e.height}),null!==_.metric&&(0,r.Y)(n.A,{categories:w,position:_.legend_position,format:_.legend_format})]})})}}]);
