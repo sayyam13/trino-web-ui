@@ -1,5 +1,5 @@
 """HTTP Handlers for the hub server"""
-
+#path: venv/lib/python3.10/site-packages/jupyterhub/handlers/base.py
 # Copyright (c) Jupyter Development Team.
 # Distributed under the terms of the Modified BSD License.
 import asyncio
